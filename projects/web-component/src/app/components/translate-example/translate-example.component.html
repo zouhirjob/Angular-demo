@@ -1,0 +1,23 @@
+<h1>Using translations</h1>
+<button class="btn btn-primary" (click)="useLanguage('en')">en</button>
+<button class="btn btn-primary" (click)="useLanguage('fr')">fr</button>
+<div>
+    <!-- translation: translation pipe -->
+    <h1>{{ 'demo.title' | translate }}</h1>
+
+    <!-- translation: directive (key as attribute)-->
+    <p [translate]="'demo.text'"></p>
+
+    <!-- translation: directive (key as content of element) -->
+    <p translate>demo.text</p>
+</div>
+
+<h1>Translations with parameters</h1>
+<!-- translation: translation pipe -->
+<p>{{ 'demo.greeting' | translate:{'name':'TOTO'} }}</p>
+
+<!-- translation: directive (key as attribute) -->
+<p [translate]="'demo.greeting'" [translateParams]="{name: 'TOTO'}"></p>
+
+<!-- translation: directive (key as content of element)-->
+<p translate [translateParams]="{name: 'TOTO'}">demo.greeting</p>
