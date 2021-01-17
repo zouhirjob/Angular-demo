@@ -1,3 +1,14 @@
-<a routerLink="/button">Button</a> |
-<a routerLink="/translate">Translate</a>
-<router-outlet></router-outlet>
+<div class="mat-typography">
+  <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" [@openCloseSidenav]="isOpen ? 'open' : 'closed'" mode="side" opened>
+      <lib-left-menu (toggleEventEmitter)="toggle()"></lib-left-menu>
+    </mat-drawer>
+    <mat-drawer-content [@openCloseSidenavContent]="isOpen ? 'open' : 'closed'">
+      <div>
+        With CSS, websites can finally use fonts other than the pre selected
+        "web-safe" fonts.
+      </div>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

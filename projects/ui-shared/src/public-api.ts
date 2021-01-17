@@ -2,7 +2,8 @@
  * Public API Surface of ui-shared
  */
 
-export * from './lib/ui-shared.service';
-export * from './lib/ui-shared.component';
-export * from './lib/ui-shared.module';
-export * from './lib/ui-material.module';
+export * from './lib/icon/dsd-icon.service';
+
+export * from './lib/components/left-menu/left-menu.module';
+export * from './lib/components/left-menu/left-menu.component';
+

@@ -1,15 +1,18 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { ɵWebAnimationsDriver } from '@angular/animations/browser';
+import { sideNavAnimation, sideNavContainerAnimation } from './animations/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [ sideNavAnimation, sideNavContainerAnimation ],
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class AppComponent {
-  title = 'web-component';
+   
   constructor(private translate: TranslateService, @Inject(DOCUMENT) private document: Document) {
     let defaultLang = 'fr';
     if (this.document.documentElement.lang) {
@@ -17,5 +20,24 @@ export class AppComponent {
     }
     
     translate.setDefaultLang(defaultLang);
+
+    ɵWebAnimationsDriver.prototype.containsElement = (el1: any, el2: any) => {
+      // Travel up the tree to the root node.
+      let elem = el2;
+      while (elem && elem !== document.documentElement) {
+        if (elem === el1)
+          return true;
+        elem = elem.parentNode || elem.host;
+      }
+      return false;
+    };
   }
+
+  isOpen = false;
+
+  toggle() {
+     this.isOpen = !this.isOpen;
+   }
+
+  
 }

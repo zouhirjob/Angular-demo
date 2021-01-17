@@ -1,0 +1,22 @@
+<mat-toolbar>
+    <button type="button" aria-label="Toggle nav" mat-icon-button (click)="toggle()" >
+      <mat-icon *ngIf="!isOpen">menu</mat-icon>
+      <mat-icon *ngIf="isOpen">close</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-list>
+    <mat-list-item>
+      <mat-icon>favorite</mat-icon>
+      <div *ngIf="isOpen">
+        <a routerLink="/button">Button</a> 
+      </div>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon>bookmark</mat-icon>
+      <div *ngIf="isOpen">
+        <a routerLink="/translate">Translate</a>
+      </div>
+    </mat-list-item>
+    <mat-list-item>03</mat-list-item>
+    <mat-list-item>04</mat-list-item>
+  </mat-list>

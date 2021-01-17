@@ -10,7 +10,9 @@ import { MaterialModule } from './ui-material.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import { TranslateExampleComponent } from './components/translate-example/translate-example.component';
+import {TranslateExampleComponent } from './components/translate-example/translate-example.component';
+import { LeftMenuModule } from 'projects/ui-shared/src/lib/components/left-menu/left-menu.module';
+
 
 @NgModule({
   declarations: [
@@ -23,15 +25,18 @@ import { TranslateExampleComponent } from './components/translate-example/transl
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    // ngx-translate and the loader module
     HttpClientModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
             useFactory: HttpLoaderFactory,
             deps: [HttpClient]
         }
-    })
+    }),
+
+    // lib modules
+    LeftMenuModule
   ],
   providers: [],
   entryComponents: [AppComponent]
@@ -45,7 +50,6 @@ export class AppModule {
   ngDoBootstrap() {}
 }
 
-// required for AOT compilation
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }

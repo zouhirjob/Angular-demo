@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UiSharedComponent } from './ui-shared.component';
+import { LeftMenuComponent } from './left-menu.component';
 
-describe('UiSharedComponent', () => {
-  let component: UiSharedComponent;
-  let fixture: ComponentFixture<UiSharedComponent>;
+describe('LeftMenuComponent', () => {
+  let component: LeftMenuComponent;
+  let fixture: ComponentFixture<LeftMenuComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UiSharedComponent ]
+      declarations: [ LeftMenuComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UiSharedComponent);
+    fixture = TestBed.createComponent(LeftMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

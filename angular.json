@@ -30,7 +30,8 @@
             "styles": [
               "projects/web-component/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "extractCss": false
           },
           "configurations": {
             "production": {
