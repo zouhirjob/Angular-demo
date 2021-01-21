@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 
 
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     MatListModule,
-    RouterModule
+    RouterModule,
+    MatTooltipModule
   ], 
   exports: [LeftMenuComponent]
 })

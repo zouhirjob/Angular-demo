@@ -3,6 +3,7 @@
   "dest": "../../dist/ui-shared",
   "assets": ["assets/*"],
   "lib": {
+    "cssUrl": "inline",
     "entryFile": "src/public-api.ts"
   }
 }

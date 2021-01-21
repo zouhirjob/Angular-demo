@@ -31,3 +31,102 @@ ng generate application web-component
 ng generate library ui-shared
 
 npm install @ngx-translate/core @ngx-translate/http-loader rxjs --save
+
+
+
+
+
+
+
+##  Librairie angular
+D'après mon expérience, il existe 2 cas d'utilisation courants pour les bibliothèques angulaires:
+
+- Création des composants réutilisables pour le partage entre les applications.
+- Création d'une fonctionnalité/service partagée 
+
+Bien que l'utilisation d'une librairie est bien claire et necessaire dans notre projet, il faut bien analyse avant meme de commencer a faire la librairie, il faut bien commencer dans le projet et diterminer que le besoin est bien claire que on a le meme besoin dans un autre projet. nous pouvons toujours écrire des besoin dans le cadre d'un module angular partagé au sein de votre application et les extraire dans une bibliothèque si nécessaire.
+
+## Création d'une Librairie angular
+Nous allons deja cree une Librairie Angular pour le theme et les composantes de menu et header, ainsi qu'une application de démonstration pour utiliser cette Librairie. 
+
+Nous pouvons créer une autre avec les commandes suivantes:
+
+ng new demo-wbc-lib --createApplication=false --interactive=false
+ng generate application web-component
+ng generate library ui-shared
+
+
+Si vous ouvrer la structure generer vous aller trouver un dossier de projets contenant un sous-dossier pour chacune de la librarie ( ui-shared) et l'application (web-component) que nous venons de générer.
+
+Pour builder la Librairie : 
+
+ng build ui-shared
+
+Si nous regardons dans le dossier dist, nous verrons le resultat du build de la librairie et qu'à l'intérieur nous avons un certain nombre de dossiers différents contenant l'application dans différents formats de modules adaptés à différents consommateurs, ainsi qu'un dossier contenant Définitions TypeScript.
+
+- bundles - format du module UMD.
+- esm5 - format de module qui utilise principalement es5, mais aussi la syntaxe d'import / export d'es6.
+- esm2015 - format de module qui utilise es2015 / es6.
+- fesm5 - version aplatie de esm5.
+- fesm2015 - version aplatie de peerDependencies esm2015.
+- lib - Définitions TypeScript pour la bibliothèque.
+Ce format s'appelle Angular Package Format, et c'est le format utilisé comme sortie de ng-packagr, l'outil utilisé par Angular CLI pour builder la librairie. (https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview)
+
+Structurer de la Librairie Angular
+Le contenu de la bibliothèque ressemble actuellement à ceci:
+
+**
+
+Ensuite, nous ajouterons un composant, un pipe et une directive.Nous suivrons la facon de creer un composant par module 
+- cela permettra à une application consommatrice d'importer uniquement les modules de la librairie qui l'intéressent, puis pour tous les autres modules non utiliser il seront pas ajouter dans le bundle final (tree shaken during the build process)* Je recommande vivement de le faire, car cela fera vraiment une différence dans la taille des bundles d'applications tout au long du l'application evolue.
+
+ng generate module components/em-header
+ng generate component components/em-header
+
+ng generate module pipes/credit-card
+ng generate pipe pipes/credit-card/credit-card
+
+ng generate module pipes/account-number
+ng generate pipe pipes/account-number/account-number
+
+ng generate module directives/em-tooltip
+ng generate directive directives/em-tooltip/em-tooltip
+
+
+
+Bien sûr, cette structure peut être ajustée, mais l'éléments importants:
+
+Avoir un composant par module pour (tree shaken) des modules / composants inutilisés.
+
+L'exception à cela est que les composants qui sont toujours utilisés ensemble doivent être conservés dans le même module.
+
+
+Ensuite, nous devons ajouter chacun des composants que nous avons créés aux export de son module:
+
+il faut mettre a jour public_api.ts pour exporter tous les fichiers de la bibliothèque que nous souhaitons exposer
+
+
+Utilisation de la librairie dans le demo ou toute autre application
+Pendant le développement, la meilleure façon de consommer notre bibliothèque est d'utiliser 
+ - npm link
+ Cela nous permettra de créer un lien symbolique depuis un répertoire node_modules de notre application vers le build de la librairie dans le dossier dist.
+
+cd dist / ui-shared
+npm link
+
+Depuis le dossier racine du projet depuis n'importe où sur notre machine locale. 
+npm link ui-shared
+
+build la librairie avec un watch 
+
+ng build ui-shared --watch
+
+ng build demo
+
+en même temps exécutons ng serve dans une autre terminal.
+ng serve
+
+Cela nous permettra de développer dans l'application et (une ou plusieurs) librairie liées simultanément, et de voir l'application se recompiler à chaque modification du code source de la bibliothèque.
+
+
+https://medium.com/angular-in-depth/improve-spa-performance-by-splitting-your-angular-libraries-in-multiple-chunks-8c68103692d0

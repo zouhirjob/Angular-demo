@@ -1,10 +1,23 @@
-<div class="mat-typography">
+<div class="mat-typography content-container" >
   <mat-drawer-container class="example-container">
     <mat-drawer mode="side" [@openCloseSidenav]="isOpen ? 'open' : 'closed'" mode="side" opened>
-      <lib-left-menu (toggleEventEmitter)="toggle()"></lib-left-menu>
+      <lib-left-menu (toggleEventEmitter)="toggle()">
+        fff
+        <mat-list>
+          <mat-list-item>
+            <mat-icon *ngIf="!isOpen">favorite</mat-icon>
+            <div *ngIf="isOpen">
+              <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                <mat-button-toggle value="bold">Bold</mat-button-toggle>
+                <mat-button-toggle value="italic">Italic</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </lib-left-menu>
     </mat-drawer>
     <mat-drawer-content [@openCloseSidenavContent]="isOpen ? 'open' : 'closed'">
-      <div>
+      <div style="border: 1px black;">
         With CSS, websites can finally use fonts other than the pre selected
         "web-safe" fonts.
       </div>

@@ -45,3 +45,42 @@ export const sideNavContainerAnimation = trigger('openCloseSidenavContent', [
       animate('0.3s')
     ]),
   ]);
+
+
+
+
+
+
+
+  
+export const sideNavAnimationN = trigger('openCloseSidenavN', [
+  // ...
+  state('open', style({
+    width: '200px',
+  })),
+  state('closed', style({
+    width: '60px',
+  })),
+  transition('open <=> closed', [
+    animate('0.3s')
+  ]),
+]);
+
+/*
+* animation: sideNavContainerAnimation
+* trigger: 'openCloseSidenavContent'
+*
+* comments: Sets the margin-left to 201px when "open" and 61px when "closed".
+*/
+
+export const sideNavContainerAnimationN = trigger('openCloseSidenavContentN', [
+  state('open', style({
+    'margin-left': '201px',
+  })),
+  state('closed', style({
+    'margin-left': '61px',
+  })),
+  transition('open <=> closed', [
+    animate('0.3s')
+  ]),
+]);

@@ -2,13 +2,14 @@ import { DOCUMENT } from '@angular/common';
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ɵWebAnimationsDriver } from '@angular/animations/browser';
-import { sideNavAnimation, sideNavContainerAnimation } from './animations/animations';
+import { sideNavAnimation, sideNavContainerAnimation, sideNavContainerAnimationN, sideNavAnimationN } from './animations/animations';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [ sideNavAnimation, sideNavContainerAnimation ],
+  animations: [ sideNavAnimation, sideNavContainerAnimation, sideNavAnimationN, sideNavContainerAnimationN ],
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class AppComponent {
@@ -38,6 +39,11 @@ export class AppComponent {
   toggle() {
      this.isOpen = !this.isOpen;
    }
+
+   isOpenN = false;
+   toggleN() {
+    this.isOpenN = !this.isOpenN;
+  }
 
   
 }

@@ -11,7 +11,10 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateExampleComponent } from './components/translate-example/translate-example.component';
-import { LeftMenuModule } from 'projects/ui-shared/src/lib/components/left-menu/left-menu.module';
+import { LeftMenuModule } from 'ui-shared';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { InAppRootOverlayContainer } from './animations/custom-overlay-container';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -36,9 +39,12 @@ import { LeftMenuModule } from 'projects/ui-shared/src/lib/components/left-menu/
     }),
 
     // lib modules
-    LeftMenuModule
+    LeftMenuModule,
+    MatButtonToggleModule
   ],
-  providers: [],
+  providers: [
+    { provide: OverlayContainer, useClass:  InAppRootOverlayContainer },
+  ],
   entryComponents: [AppComponent]
 })
 export class AppModule { 
