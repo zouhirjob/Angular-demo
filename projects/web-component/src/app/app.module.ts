@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, ɵDomSharedStylesHost } from '@angular/platform-browser';
 import { Injector, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -49,9 +49,12 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 })
 export class AppModule { 
   constructor(injector: Injector) {
+    injector.get(ɵDomSharedStylesHost).removeHost(document.head);
     const el = createCustomElement(AppComponent, { injector });
     customElements.define('demo-web-component', el);
   }
+
+ 
 
   ngDoBootstrap() {}
 }
