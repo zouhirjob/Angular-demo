@@ -2,7 +2,7 @@
  * Public API Surface of ui-shared
  */
 
-export * from './lib/icon/dsd-icon.service';
+export * from './lib/services/icon/dsd-icon.service';
 
 // Menu left
 export * from './lib/components/left-menu/left-menu.module';

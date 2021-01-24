@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'lib-left-menu',
@@ -8,6 +8,20 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class LeftMenuComponent implements OnInit {
 
   @Output() toggleEventEmitter = new EventEmitter<boolean>();
+
+  menuItems : any = [
+    {
+      label : 'Carte de credit 1',
+      icon: 'home',
+      url: '/translate'
+    },
+
+    {
+      label : 'Carte de credit 2',
+      icon: 'bookmark',
+      url: '/button'
+    }
+  ];
 
   isOpen = false;
 

@@ -5,20 +5,14 @@
     </button>
   </mat-toolbar>
   <mat-list>
-    <mat-list-item>
-      <mat-icon>favorite</mat-icon>
-      <div *ngIf="isOpen">
-        <a routerLink="/button">Button bb</a> 
-      </div>
+    <mat-list-item *ngFor="let menuItem of menuItems">
+      <a [routerLink]="menuItem.url">
+        <mat-icon>{{menuItem.icon}}</mat-icon>
+        <div *ngIf="isOpen">
+          {{menuItem.label}}
+        </div>
+      </a> 
     </mat-list-item>
-    <mat-list-item>
-      <mat-icon>bookmark</mat-icon>
-      <div *ngIf="isOpen">
-        <a routerLink="/translate">Translate</a>
-      </div>
-    </mat-list-item>
-    <mat-list-item>03</mat-list-item>
-    <mat-list-item>04</mat-list-item>
   </mat-list>
 
   <ng-content></ng-content>

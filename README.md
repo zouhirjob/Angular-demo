@@ -130,3 +130,46 @@ Cela nous permettra de développer dans l'application et (une ou plusieurs) libr
 
 
 https://medium.com/angular-in-depth/improve-spa-performance-by-splitting-your-angular-libraries-in-multiple-chunks-8c68103692d0
+
+
+
+https://guide-angular.wishtack.io/angular/testing/unit-testing/unit-test-synchrone
+
+Mise en place d’un test unitaire avec Angular
+Angular (Angular Cli) génère automatiquement un fichier de test, à chaque fois que nous ajoutons un Component, un Service.
+Chaque fichier de test respecte le format : {nom du fichier}.spec.ts.
+
+Il suffit d'utiliser les 3 fonctions suivantes pour implémenter un premier test :
+describe : pour définir une suite (ou groupe) de "specs".
+it : pour définir une "spec" (ou un test).
+expect : pour implémenter les assertions.
+
+Tester un Service
+Nous allons tester que notre service renvoie bien les éléments de notre menu a construire.
+
+Or, notre service appelle une API. API qui va être requêter via du HTTP, et donc depuis le HttpClient d’Angular.
+
+
+
+
+
+Jasmine
+Jasmine https://jasmine.github.io/ est un framework (produit par Pivotal https://pivotal.io/, cf. https://www.pivotaltracker.com) extensible dédié aux tests sur "browser" et sur NodeJS.
+
+C'est le JUnit du JavaScript.
+
+Il inclut tout le nécessaire pour :
+
+définir des suites de tests (fonctions describe et it),
+
+implémenter des assertions de toute sorte (fonction expect),
+
+implémenter rapidement des "Spies" (alias mocks) (fonctions createSpy, createSpyObj et spyOn).
+
+Documentation et Introduction
+https://jasmine.github.io/api/3.6/global
+
+​https://jasmine.github.io/tutorials/your_first_suite
+
+
+https://guide-angular.wishtack.io/angular/testing/unit-testing/unit-test-synchrone
