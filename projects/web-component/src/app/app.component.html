@@ -2,10 +2,9 @@
   <mat-drawer-container class="example-container">
     <mat-drawer mode="side" [@openCloseSidenav]="isOpen ? 'open' : 'closed'" mode="side" opened>
       <lib-left-menu (toggleEventEmitter)="toggle()">
-        fff
-        <mat-list>
-          <mat-list-item>
-            <mat-icon *ngIf="!isOpen">favorite</mat-icon>
+        <mat-list >
+          <mat-list-item em-tooltip="em-tootip on left" placement="right">
+            <mat-icon *ngIf="isOpen">favorite</mat-icon>
             <div *ngIf="isOpen">
               <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
                 <mat-button-toggle value="bold">Bold</mat-button-toggle>
@@ -17,10 +16,20 @@
       </lib-left-menu>
     </mat-drawer>
     <mat-drawer-content [@openCloseSidenavContent]="isOpen ? 'open' : 'closed'">
-      <div style="border: 1px black;">
+      <div style="border: 1px black;" appTooltip>
         With CSS, websites can finally use fonts other than the pre selected
         "web-safe" fonts.
       </div>
+
+      <div style="padding: 200px;max-width: 100px;">
+        <div  em-tooltip="em-tootip on top" em-tooltip-placement="top">tootip on top</div><br>
+        <div  em-tooltip="em-tootip on right" em-tooltip-placement="right">tootip on right</div><br>
+        <div  em-tooltip="em-tootip on left" em-tooltip-placement="left">tootip on left</div><br>
+        <div  em-tooltip="em-tootip on bottom" em-tooltip-placement="bottom">tootip on right</div><br><br>
+      </div>
+
+        
+
       <router-outlet></router-outlet>
     </mat-drawer-content>
   </mat-drawer-container>

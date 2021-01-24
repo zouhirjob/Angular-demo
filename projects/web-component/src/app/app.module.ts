@@ -15,13 +15,15 @@ import { LeftMenuModule } from 'ui-shared';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { InAppRootOverlayContainer } from './animations/custom-overlay-container';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { TooltipDirective } from './tooltip/tooltip.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UiButtonComponent,
-    TranslateExampleComponent
+    TranslateExampleComponent,
+    TooltipDirective
   ],
   imports: [
     BrowserModule,

@@ -173,3 +173,5 @@ https://jasmine.github.io/api/3.6/global
 
 
 https://guide-angular.wishtack.io/angular/testing/unit-testing/unit-test-synchrone
+
+https://stackblitz.com/edit/angular-tooltip-directive?file=app%2Ftooltip.directive.ts
